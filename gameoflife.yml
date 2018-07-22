@@ -24,7 +24,7 @@
 
     - name: Copying the file
       copy: 
-        src: "{{ workspace }}/gameoflife-0.0.1.war"
+        src: "{{ work }}/gameoflife-0.0.1.war"
         dest: "/tmp/gameoflife/gameoflife.war"
         mode: 0777
 
