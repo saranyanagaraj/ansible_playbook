@@ -5,29 +5,23 @@
     - name: Installing java
       yum: java-1.8.0-openjdk
       state: present
-
     - name: Checking Gameoflife folder
       stat: 
         path: "/tmp/gameoflife"
       register: game
-
     - name: Deleting folder
       file:
         path: "/tmp/gameoflife"
         state: absent
       when: game.stat.exists == true
-
     - name: Creating folder
       file:
         path: "/tmp/gameoflife"
         state: directory
-
     - name: Copying the file
       copy: 
         src: "{{ work }}/gameoflife-0.0.1.war"
         dest: "/tmp/gameoflife/gameoflife.war"
         mode: 0777
-
     - name: execute war
       shell: "cd /tmp/gameoflife/ ; nohup java -jar gameoflife.war &"
-
